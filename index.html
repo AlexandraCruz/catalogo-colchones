@@ -116,7 +116,7 @@
     display:block;
     flex-shrink:0;
   }
-  /* Color de marca específico al hover (opcional, pero bonito) */
+  /* Color de marca específico al hover */
   .social-links a[href*="facebook"]:hover { background:#1877F2; border-color:#1877F2; }
   .social-links a[href*="instagram"]:hover { background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); border-color:transparent; }
   .social-links a[href*="wa.link"], .social-links a[href*="whatsapp"]:hover { background:#25D366; border-color:#25D366; }
@@ -153,7 +153,7 @@
   .badge{font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em; color:#D8D3C4; display:flex; align-items:center; gap:8px;}
   .badge .dot{width:6px; height:6px; background:var(--gold); border-radius:50%; display:inline-block;}
 
-  main{max-width:1100px; margin:0 auto; padding:56px 24px 100px;}
+  main{max-width:1100px; margin:0 auto; padding:56px 24px 60px;}
 
   .section-head{margin-bottom:28px;}
   .section-head .eyebrow-dark{
@@ -192,6 +192,58 @@
   .item-card.highlight{background:#FFF8EC;}
   .item-card.highlight .price{color:var(--brick);}
 
+  /* ESTILOS UBICACIÓN / MAPA */
+  .location-section {
+    max-width: 1100px;
+    margin: 0 auto 100px;
+    padding: 0 24px;
+  }
+  .map-wrapper {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 12px;
+    border-radius: var(--radius);
+  }
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    background: var(--cotton-2);
+  }
+  .map-container iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border: 0;
+  }
+  .map-footer {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0 12px;
+  }
+  .directions-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--indigo);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    transition: all .2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .directions-btn:hover {
+    background: var(--indigo-2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(43, 58, 85, 0.15);
+  }
+  .directions-btn svg { width: 18px; height: 18px; }
+
   footer{
     background:var(--ink); color:#D8D3C4; padding:48px 24px; text-align:center;
   }
@@ -211,6 +263,7 @@
     nav.cats{width:100%; overflow-x:auto; flex-wrap:nowrap; padding-bottom:4px;}
     .social-links{margin-left:0; width:100%; justify-content:flex-start; padding-top:8px; border-top:1px solid var(--line); margin-top:8px;}
     .whatsapp-btn{width:100%; text-align:center;}
+    .map-container { height: 350px; }
   }
 </style>
 </head>
@@ -227,20 +280,16 @@
       <button data-cat="king">King</button>
     </nav>
     
-    <!-- GRUPO DE ACCIONES DERECHA: WhatsApp Botón + Iconos Redes -->
     <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-left:auto;">
       <a class="whatsapp-btn" href="https://wa.me/18297664304" target="_blank" rel="noopener">Escríbenos</a>
       
       <div class="social-links" aria-label="Redes sociales de Godfrey">
-        <!-- Facebook -->
         <a href="https://www.facebook.com/profile.php?id=61588720525272" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Colchones Godfrey">
           <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
         </a>
-        <!-- Instagram -->
         <a href="https://www.instagram.com/colchones_godfrey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Colchones Godfrey">
           <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
         </a>
-        <!-- WhatsApp -->
         <a href="https://wa.link/vzoxlp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Colchones Godfrey">
           <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.297.126.594.198.892.198.323 0 .57-.1.769-.298.198-.197.346-.594.416-1.018.075-.399.075-.966.05-1.297-.025-.348-.173-.82-.372-1.125-.198-.298-.717-1.206-1.096-1.824zM12 2C6.477 2 2 6.477 2 12c0 2.014.548 3.89 1.493 5.422L2 22l5.578-1.578A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
         </a>
@@ -253,19 +302,19 @@
   <div class="hero-inner">
     <span class="eyebrow">Lista de precios · Agosto 2026</span>
     <h1>Un colchón bueno tiene calidad y durabilidad.</h1>
-    <p>Fabricamos con materiales de calidad. Cada colchón lleva garantía firmada y precio claro, sin sorpresas.</p>
+    <p>Fabricamos con materiales de calidad. Cada colchón lleva garantía, sin sorpresas.</p>
     <div class="badges">
       <span class="badge"><span class="dot"></span>Garantía hasta 5 años</span>
       <span class="badge"><span class="dot"></span>Fabricación dominicana con calidad</span>
       <span class="badge"><span class="dot"></span>Firme · Pillowtop · SuperPillowtop · King </span>
-      <span class="badge"><span class="dot"></span>¿Necesitas un colchón extra largo o de medidads especiales? </span>
-       <span class="badge"><span class="dot"></span>¿Necesitas reparar tu cama o tu base? </span>
+      <span class="badge"><span class="dot"></span>Medidas especiales y reparación </span>
     </div>
   </div>
 </section>
 
 <main>
 
+  <!-- LÍNEA FIRME -->
   <div class="size-block" data-cat="firme">
     <div class="section-head">
       <span class="eyebrow-dark">Línea Firme</span>
@@ -301,6 +350,7 @@
     </div>
   </div>
 
+  <!-- LÍNEA PILLOWTOP -->
   <div class="size-block" data-cat="pillowtop">
     <div class="section-head">
       <span class="eyebrow-dark">Línea Pillowtop</span>
@@ -342,6 +392,7 @@
     </div>
   </div>
 
+  <!-- LÍNEA SUPER PILLOWTOP -->
   <div class="size-block" data-cat="superpillowtop">
     <div class="section-head">
       <span class="eyebrow-dark">Línea SuperPillowtop</span>
@@ -368,6 +419,7 @@
     </div>
   </div>
 
+  <!-- LÍNEA KING -->
   <div class="size-block" data-cat="king">
     <div class="section-head">
       <span class="eyebrow-dark">Línea King</span>
@@ -388,11 +440,40 @@
 
 </main>
 
+<!-- SECCIÓN DE UBICACIÓN INTEGRADA -->
+<section class="location-section">
+  <div class="section-head">
+    <span class="eyebrow-dark">Visítanos</span>
+    <h2>Nuestra Ubicación</h2>
+    <p>Pasa por nuestra fábrica y prueba el confort de nuestros colchones en persona.</p>
+  </div>
+  
+  <div class="map-wrapper">
+    <div class="map-container">
+      <!-- Google Maps Iframe Responsivo -->
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.829447154944!2d-69.89588742416805!3d18.49231248259461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf895d1cb00d93%3A0x6104fae63715d1c5!2sColchoner%C3%ADa%20Godfrey!5e0!3m2!1ses!2sdo!4v1721665200000!5m2!1ses!2sdo" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="map-footer">
+      <a href="https://www.google.com/maps/dir//Colchoner%C3%ADa+Godfrey/@18.4923125,-69.8933125,17z/" 
+         class="directions-btn" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Cómo llegar
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="brand-f">Godfrey</div>
   <p>Precios en pesos dominicanos (RD$), vigentes desde Julio 2026 y sujetos a cambio sin previo aviso.</p>
   
-  <!-- REDES SOCIALES EN FOOTER -->
   <div class="social-links" aria-label="Síguenos en redes sociales">
     <a href="https://www.facebook.com/profile.php?id=61588720525272" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Colchones Godfrey">
       <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
