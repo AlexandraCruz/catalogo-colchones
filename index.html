@@ -79,6 +79,48 @@
   }
   .whatsapp-btn:hover{background:var(--brick-2);}
 
+  /* --- NUEVOS ESTILOS REDES SOCIALES --- */
+  .social-links{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-left:auto; /* Empuja a la derecha en el header */
+  }
+  .social-links a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--cotton-2);
+    border:1px solid var(--line);
+    color:var(--ink);
+    text-decoration:none;
+    transition:all .2s ease;
+    line-height:0; /* Elimina espacio extra bajo el SVG */
+  }
+  .social-links a:hover{
+    background:var(--indigo);
+    border-color:var(--indigo);
+    color:#fff;
+    transform:translateY(-2px);
+  }
+  .social-links a:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:2px;
+  }
+  .social-icon{
+    width:20px;
+    height:20px;
+    display:block;
+    flex-shrink:0;
+  }
+  /* Color de marca específico al hover (opcional, pero bonito) */
+  .social-links a[href*="facebook"]:hover { background:#1877F2; border-color:#1877F2; }
+  .social-links a[href*="instagram"]:hover { background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); border-color:transparent; }
+  .social-links a[href*="wa.link"], .social-links a[href*="whatsapp"]:hover { background:#25D366; border-color:#25D366; }
+
   .hero{
     background:var(--indigo);
     background-image:linear-gradient(180deg, var(--indigo) 0%, var(--indigo-2) 100%);
@@ -155,13 +197,20 @@
   }
   footer .brand-f{font-family:'Fraunces',serif; font-size:1.2rem; margin-bottom:10px;}
   footer p{font-size:.85rem; color:#9B988E; margin:6px 0;}
-  footer a.wa{color:var(--gold); text-decoration:none;}
+  footer .social-links{justify-content:center; margin:16px auto 0; background:none;} /* Override header styles */
+  footer .social-links a{background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.1); color:#D8D3C4;}
+  footer .social-links a:hover{background:var(--gold); border-color:var(--gold); color:var(--ink);}
+  footer .social-links a[href*="facebook"]:hover { background:#1877F2; border-color:#1877F2; color:#fff; }
+  footer .social-links a[href*="instagram"]:hover { background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); border-color:transparent; color:#fff; }
+  footer .social-links a[href*="wa.link"], footer .social-links a[href*="whatsapp"]:hover { background:#25D366; border-color:#25D366; color:#fff; }
 
   .hidden{display:none !important;}
 
   @media (max-width:640px){
     .nav-wrap{flex-direction:column; align-items:flex-start;}
     nav.cats{width:100%; overflow-x:auto; flex-wrap:nowrap; padding-bottom:4px;}
+    .social-links{margin-left:0; width:100%; justify-content:flex-start; padding-top:8px; border-top:1px solid var(--line); margin-top:8px;}
+    .whatsapp-btn{width:100%; text-align:center;}
   }
 </style>
 </head>
@@ -177,7 +226,26 @@
       <button data-cat="superpillowtop">SuperPillowtop</button>
       <button data-cat="king">King</button>
     </nav>
-    <a class="whatsapp-btn" href="https://wa.me/18297664304" target="_blank" rel="noopener">Escribenos</a>
+    
+    <!-- GRUPO DE ACCIONES DERECHA: WhatsApp Botón + Iconos Redes -->
+    <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-left:auto;">
+      <a class="whatsapp-btn" href="https://wa.me/18297664304" target="_blank" rel="noopener">Escríbenos</a>
+      
+      <div class="social-links" aria-label="Redes sociales de Godfrey">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=61588720525272" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Colchones Godfrey">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/colchones_godfrey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Colchones Godfrey">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.link/vzoxlp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Colchones Godfrey">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.297.126.594.198.892.198.323 0 .57-.1.769-.298.198-.197.346-.594.416-1.018.075-.399.075-.966.05-1.297-.025-.348-.173-.82-.372-1.125-.198-.298-.717-1.206-1.096-1.824zM12 2C6.477 2 2 6.477 2 12c0 2.014.548 3.89 1.493 5.422L2 22l5.578-1.578A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -323,7 +391,21 @@
 <footer>
   <div class="brand-f">Godfrey</div>
   <p>Precios en pesos dominicanos (RD$), vigentes desde Julio 2026 y sujetos a cambio sin previo aviso.</p>
-  <p>Escríbenos por <a class="wa" href="https://wa.me/18297664304" target="_blank" rel="noopener"></a>WhatsApp</p>
+  
+  <!-- REDES SOCIALES EN FOOTER -->
+  <div class="social-links" aria-label="Síguenos en redes sociales">
+    <a href="https://www.facebook.com/profile.php?id=61588720525272" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Colchones Godfrey">
+      <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/colchones_godfrey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Colchones Godfrey">
+      <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+    </a>
+    <a href="https://wa.link/vzoxlp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Colchones Godfrey">
+      <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.297.126.594.198.892.198.323 0 .57-.1.769-.298.198-.197.346-.594.416-1.018.075-.399.075-.966.05-1.297-.025-.348-.173-.82-.372-1.125-.198-.298-.717-1.206-1.096-1.824zM12 2C6.477 2 2 6.477 2 12c0 2.014.548 3.89 1.493 5.422L2 22l5.578-1.578A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+    </a>
+  </div>
+
+  <p style="margin-top:24px; font-size:.75rem; color:#7a7870;">Hecho en República Dominicana 🇩🇴</p>
 </footer>
 
 <script>
