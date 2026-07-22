@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es-DO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colchonería Godfrey — Catálogo de Precios</title>
+<meta name="description" content="Catálogo de precios de colchones Firme, Pillowtop, SuperPillowtop y King. Calidad garantizada, hecho en República Dominicana, con calidad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cotton:#EFEAE0;
+    --cotton-2:#E6DFD0;
+    --ink:#23262B;
+    --ink-soft:#54524B;
+    --indigo:#2B3A55;
+    --indigo-2:#1E293D;
+    --brick:#A6472B;
+    --brick-2:#8A3A22;
+    --gold:#B8912F;
+    --line:#D3C9B4;
+    --card:#FBF9F4;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cotton);
+    color:var(--ink);
+    font-family:'Public Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .display{font-family:'Fraunces',serif;}
+
+  /* quilted diamond texture, the signature motif */
+  .quilt{
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 34px);
+  }
+  .quilt-dark{
+    background-image:
+      repeating-linear-gradient(45deg, rgba(0,0,0,0.10) 0, rgba(0,0,0,0.10) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,0.10) 0, rgba(0,0,0,0.10) 1px, transparent 1px, transparent 34px);
+  }
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--cotton);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1100px; margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{
+    font-family:'Fraunces',serif; font-weight:700; font-size:1.25rem; letter-spacing:.01em;
+  }
+  .brand small{display:block; font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:.6rem; letter-spacing:.14em; color:var(--ink-soft); text-transform:uppercase; margin-top:2px;}
+  nav.cats{display:flex; gap:4px; flex-wrap:wrap;}
+  nav.cats button{
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;
+    background:transparent; border:1px solid var(--line); color:var(--ink-soft);
+    padding:8px 14px; border-radius:var(--radius); cursor:pointer;
+    transition:all .15s ease;
+  }
+  nav.cats button:hover{border-color:var(--indigo); color:var(--indigo);}
+  nav.cats button.active{background:var(--indigo); border-color:var(--indigo); color:#fff;}
+  .whatsapp-btn{
+    font-family:'IBM Plex Mono',monospace; font-size:.75rem; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--brick); color:#fff; text-decoration:none;
+    padding:10px 18px; border-radius:var(--radius); white-space:nowrap;
+    transition:background .15s ease;
+  }
+  .whatsapp-btn:hover{background:var(--brick-2);}
+
+  .hero{
+    background:var(--indigo);
+    background-image:linear-gradient(180deg, var(--indigo) 0%, var(--indigo-2) 100%);
+    color:#F3EFE4;
+    padding:72px 24px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.045) 0, rgba(255,255,255,0.045) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,0.045) 0, rgba(255,255,255,0.045) 1px, transparent 1px, transparent 40px);
+    pointer-events:none;
+  }
+  .hero-inner{max-width:1100px; margin:0 auto; position:relative;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:18px; display:block;
+  }
+  h1{
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.05; margin:0 0 20px; max-width:16ch;
+  }
+  .hero p{
+    font-size:1.05rem; line-height:1.6; max-width:52ch; color:#D8D3C4; margin:0 0 32px;
+  }
+  .badges{display:flex; gap:28px; flex-wrap:wrap;}
+  .badge{font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em; color:#D8D3C4; display:flex; align-items:center; gap:8px;}
+  .badge .dot{width:6px; height:6px; background:var(--gold); border-radius:50%; display:inline-block;}
+
+  main{max-width:1100px; margin:0 auto; padding:56px 24px 100px;}
+
+  .section-head{margin-bottom:28px;}
+  .section-head .eyebrow-dark{
+    font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brick); margin-bottom:8px; display:block;
+  }
+  .section-head h2{font-family:'Fraunces',serif; font-weight:600; font-size:1.9rem; margin:0 0 6px;}
+  .section-head p{margin:0; color:var(--ink-soft); font-size:.95rem;}
+
+  .size-block{margin-bottom:44px;}
+  .size-block-title{
+    display:flex; align-items:baseline; gap:12px; margin-bottom:14px;
+    border-bottom:1px solid var(--line); padding-bottom:10px;
+  }
+  .size-block-title h3{
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.3rem; margin:0;
+  }
+  .warranty-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold); padding:3px 9px; border-radius:20px; margin-left:auto;
+  }
+  .items-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .item-card{
+    background:var(--card); padding:20px;
+  }
+  .item-card .label{
+    font-size:.85rem; color:var(--ink-soft); line-height:1.4; margin-bottom:14px; min-height:2.6em;
+  }
+  .item-card .price{
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:1.5rem; color:var(--indigo);
+  }
+  .item-card .price::before{content:"RD$ ";font-size:.65em; color:var(--ink-soft); font-weight:500;}
+  .item-card.highlight{background:#FFF8EC;}
+  .item-card.highlight .price{color:var(--brick);}
+
+  footer{
+    background:var(--ink); color:#D8D3C4; padding:48px 24px; text-align:center;
+  }
+  footer .brand-f{font-family:'Fraunces',serif; font-size:1.2rem; margin-bottom:10px;}
+  footer p{font-size:.85rem; color:#9B988E; margin:6px 0;}
+  footer a.wa{color:var(--gold); text-decoration:none;}
+
+  .hidden{display:none !important;}
+
+  @media (max-width:640px){
+    .nav-wrap{flex-direction:column; align-items:flex-start;}
+    nav.cats{width:100%; overflow-x:auto; flex-wrap:nowrap; padding-bottom:4px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="brand">Godfrey<small>Colchones · Bases · Reparación · Fabricación a la medida</small></div>
+    <nav class="cats" id="catNav">
+      <button data-cat="all" class="active">Todo</button>
+      <button data-cat="firme">Firme</button>
+      <button data-cat="pillowtop">Pillowtop</button>
+      <button data-cat="superpillowtop">SuperPillowtop</button>
+      <button data-cat="king">King</button>
+    </nav>
+    <a class="whatsapp-btn" href="https://wa.me/18297664304" target="_blank" rel="noopener">Escribenos</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Lista de precios · Agosto 2026</span>
+    <h1>Un colchón bueno tiene calidad y durabilidad.</h1>
+    <p>Fabricamos con materiales de calidad. Cada colchón lleva garantía firmada y precio claro, sin sorpresas.</p>
+    <div class="badges">
+      <span class="badge"><span class="dot"></span>Garantía hasta 5 años</span>
+      <span class="badge"><span class="dot"></span>Fabricación dominicana con calidad</span>
+      <span class="badge"><span class="dot"></span>Firme · Pillowtop · SuperPillowtop · King · Necesitas un colchón extra largo o de medidads especiales? </span>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <div class="size-block" data-cat="firme">
+    <div class="section-head">
+      <span class="eyebrow-dark">Línea Firme</span>
+      <h2>Firme</h2>
+      <p>Soporte parejo y firme, sin acolchado extra. La opción más resistente para uso diario.</p>
+    </div>
+
+    <div class="size-block">
+      <div class="size-block-title"><h3>39" — Individual</h3><span class="warranty-tag">3 años</span></div>
+      <div class="items-grid">
+        <div class="item-card highlight"><div class="label">Juego completo (colchón + base)</div><div class="price">13,500</div></div>
+        <div class="item-card"><div class="label">Colchón solo</div><div class="price">9,000</div></div>
+        <div class="item-card"><div class="label">Base sola</div><div class="price">5,500</div></div>
+      </div>
+    </div>
+
+    <div class="size-block">
+      <div class="size-block-title"><h3>54" — Matrimonial</h3><span class="warranty-tag">3 años</span></div>
+      <div class="items-grid">
+        <div class="item-card highlight"><div class="label">Juego completo (colchón + base)</div><div class="price">16,000</div></div>
+        <div class="item-card"><div class="label">Colchón solo</div><div class="price">11,500</div></div>
+        <div class="item-card"><div class="label">Base sola</div><div class="price">5,500</div></div>
+      </div>
+    </div>
+
+    <div class="size-block">
+      <div class="size-block-title"><h3>60" — Queen</h3><span class="warranty-tag">3 años</span></div>
+      <div class="items-grid">
+        <div class="item-card highlight"><div class="label">Juego completo (colchón + base)</div><div class="price">19,000</div></div>
+        <div class="item-card"><div class="label">Colchón solo</div><div class="price">14,500</div></div>
+        <div class="item-card"><div class="label">Base sola</div><div class="price">5,500</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="size-block" data-cat="pillowtop">
+    <div class="section-head">
+      <span class="eyebrow-dark">Línea Pillowtop</span>
+      <h2>Pillowtop</h2>
+      <p>Capa acolchada adicional para mayor suavidad. Disponible doble cara (flip) o una sola cara.</p>
+    </div>
+
+    <div class="size-block">
+      <div class="size-block-title"><h3>39" — Individual</h3><span class="warranty-tag">5 años</span></div>
+      <div class="items-grid">
+        <div class="item-card highlight"><div class="label">Juego · colchón doble cara + base</div><div class="price">17,500</div></div>
+        <div class="item-card highlight"><div class="label">Juego · colchón una cara (No Flip) + base</div><div class="price">15,000</div></div>
+        <div class="item-card"><div class="label">Colchón solo · doble cara</div><div class="price">13,000</div></div>
+        <div class="item-card"><div class="label">Colchón solo · una cara (No Flip)</div><div class="price">10,500</div></div>
+        <div class="item-card"><div class="label">Base sola</div><div class="price">5,500</div></div>
+      </div>
+    </div>
+
+    <div class="size-block">
+      <div class="size-block-title"><h3>54" — Matrimonial</h3><span class="warranty-tag">5 años</span></div>
+      <div class="items-grid">
+        <div class="item-card highlight"><div class="label">Juego · colchón doble cara + base</div><div class="price">20,000</div></div>
+        <div class="item-card highlight"><div class="label">Juego · colchón una cara (No Flip) + base</div><div class="price">17,500</div></div>
+        <div class="item-card"><div class="label">Colchón solo · doble cara</div><div class="price">15,500</div></div>
+        <div class="item-card"><div class="label">Colchón solo · una cara (No Flip)</div><div class="price">13,000</div></div>
+        <div class="item-card"><div class="label">Base sola</div><div class="price">5,500</div></div>
+      </div>
+    </div>
+
+    <div class="size-block">
+      <div class="size-block-title"><h3>60" — Queen</h3><span class="warranty-tag">5 años</span></div>
+      <div class="items-grid">
+        <div class="item-card highlight"><div class="label">Juego · colchón doble cara + base</div><div class="price">22,000</div></div>
+        <div class="item-card highlight"><div class="label">Juego · colchón una cara (No Flip) + base</div><div class="price">21,000</div></div>
+        <div class="item-card"><div class="label">Colchón solo · doble cara</div><div class="price">17,000</div></div>
+        <div class="item-card"><div class="label">Colchón solo · una cara (No Flip)</div><div class="price">16,000</div></div>
+        <div class="item-card"><div class="label">Base sola (box spring)</div><div class="price">5,500</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="size-block" data-cat="superpillowtop">
+    <div class="section-head">
+      <span class="eyebrow-dark">Línea SuperPillowtop</span>
+      <h2>SuperPillowtop</h2>
+      <p>Nuestro acolchado más alto. Máxima suavidad sobre soporte firme.</p>
+    </div>
+
+    <div class="size-block">
+      <div class="size-block-title"><h3>54" — Matrimonial</h3><span class="warranty-tag">Consultar</span></div>
+      <div class="items-grid">
+        <div class="item-card highlight"><div class="label">Juego completo (colchón + base)</div><div class="price">22,500</div></div>
+        <div class="item-card"><div class="label">Colchón solo</div><div class="price">18,000</div></div>
+        <div class="item-card"><div class="label">Base sola</div><div class="price">6,500</div></div>
+      </div>
+    </div>
+
+    <div class="size-block">
+      <div class="size-block-title"><h3>60" — Queen</h3><span class="warranty-tag">Consultar</span></div>
+      <div class="items-grid">
+        <div class="item-card highlight"><div class="label">Juego completo (colchón + base)</div><div class="price">24,500</div></div>
+        <div class="item-card"><div class="label">Colchón solo</div><div class="price">20,000</div></div>
+        <div class="item-card"><div class="label">Base sola</div><div class="price">6,500</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="size-block" data-cat="king">
+    <div class="section-head">
+      <span class="eyebrow-dark">Línea King</span>
+      <h2>King · 76"×80" (3 plazas)</h2>
+      <p>Nuestro tamaño más grande, disponible en Firme o Pillowtop doble cara.</p>
+    </div>
+
+    <div class="size-block">
+      <div class="items-grid">
+        <div class="item-card highlight"><div class="label">Juego completo · Pillowtop doble cara + base</div><div class="price">49,500</div></div>
+        <div class="item-card highlight"><div class="label">Juego completo · Firme + base</div><div class="price">42,500</div></div>
+        <div class="item-card"><div class="label">Colchón solo · Pillowtop</div><div class="price">42,000</div></div>
+        <div class="item-card"><div class="label">Colchón solo · Firme</div><div class="price">35,000</div></div>
+        <div class="item-card"><div class="label">Base (dos estructuras)</div><div class="price">9,000</div></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="brand-f">Godfrey</div>
+  <p>Precios en pesos dominicanos (RD$), vigentes desde Julio 2026 y sujetos a cambio sin previo aviso.</p>
+  <p>Escríbenos por <a class="wa" href="https://wa.me/18297664304" target="_blank" rel="noopener"></a>WhatsApp</p>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('#catNav button');
+  const blocks = document.querySelectorAll('main > .size-block');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      blocks.forEach(block => {
+        if (cat === 'all' || block.dataset.cat === cat) {
+          block.classList.remove('hidden');
+        } else {
+          block.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
