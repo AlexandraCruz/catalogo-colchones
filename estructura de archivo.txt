@@ -1,0 +1,15 @@
+📁 tu-proyecto/
+│
+├── index.html                (El archivo principal)
+├── meta-feed.csv             (Tu base de datos)
+├── generar_paginas.py        (El script de Python)
+│
+├── 📁 productos/             (Aquí adentro el script creará los HTML de cada colchón)
+│   ├── firme-39-juego.html
+│   ├── firme-39-solo.html
+│   └── ...
+│
+└── 📁 images/                (Aquí debes poner todas tus fotos)
+    ├── firme-39-juego.jpg
+    ├── firme-39-solo.jpg
+    └── ...
